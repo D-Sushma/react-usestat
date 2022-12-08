@@ -9,6 +9,9 @@ import "./style.css";
 import react, {useState} from "react"
 export default function App() {
 
+  // ==============onchange
+  // let [val, setVal] = useState("")
+
   // ----------------------useState--------------
   let [test, setTest] = useState(0)
   function increment(){
@@ -23,13 +26,19 @@ export default function App() {
 
   //----------------------onChange--------------------
   let [val, setVal] = useState("")
+  // function changeVal(e){
+  //   // let receiveVal = e.target.value
+  //   // console.log(receiveVal)
+  //   // setVal(receiveVal)
+  //   let {value, id} = e.target
+  //   setVal(value)
+  //   console.log(value)
+  // }
+
+  // =========================== OR ===========================
   function changeVal(e){
-    // let receiveVal = e.target.value
-    // console.log(receiveVal)
-    // setVal(receiveVal)
-    let {value, id} = e.target
-    setVal(value)
-    console.log(value)
+    setVal(e.target.value)
+    console.log(val);
   }
 
   return (
@@ -43,7 +52,13 @@ export default function App() {
 
       {/* ---------onchange------------ */}
       <br/> <br/> <br/>
-      <input type="text" id="test"onChange={changeVal}/> <br/>
+      <input type="text" id="test" value={val} onChange={changeVal}/> <br/>
+
+      {/* ............................direct-apply without making function............................... */}
+      {/* <input type="text" id="test" value={val} onChange={(e)=>setVal(e.target.value)}/> <br/> */}
+      {/* <input type="text" id="test" value={val} onChange={(e)=>{setVal(e.target.value),console.log(val)}}/> <br/> */}
+      {/* <input type="text" id="test" value={val} onChange={(e)=>{setVal(e.target.value),console.log({val})}}/> <br/> */}
+      
       <div>{val}</div>
     </div>
   );
